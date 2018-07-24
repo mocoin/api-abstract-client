@@ -11,7 +11,6 @@ export interface IStartParams {
     notes: string;
     fromLocation: factory.transaction.withdrawCoin.ILocation;
 }
-
 /**
  * コイン出金取引サービス
  */
@@ -19,7 +18,7 @@ export class WithdrawCoinTransactionService extends Service {
     /**
      * 取引開始
      */
-    public async start(params: IStartParams): Promise<factory.transaction.withdrawCoin.ITransaction> {
+    public async start(params: IStartParams): Promise<factory.transaction.ITokenizedTransaction> {
         return this.fetch({
             uri: '/transactions/withdrawCoin/start',
             method: 'POST',
@@ -34,32 +33,30 @@ export class WithdrawCoinTransactionService extends Service {
             expectedStatusCodes: [OK]
         });
     }
-
     /**
      * 取引確定
      */
-    public async confirm(params: {
-        transactionId: string;
-    }): Promise<void> {
+    public async confirm(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
-            uri: `/transactions/withdrawCoin/${params.transactionId}/confirm`,
+            uri: '/transactions/withdrawCoin/confirm',
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT],
-            body: {}
+            body: {
+                token: params.token
+            }
         });
     }
-
     /**
      * 取引中止
      */
-    public async cancel(params: {
-        transactionId: string;
-    }): Promise<void> {
+    public async cancel(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
-            uri: `/transactions/withdrawCoin/${params.transactionId}/cancel`,
+            uri: '/transactions/withdrawCoin/cancel',
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT],
-            body: {}
+            body: {
+                token: params.token
+            }
         });
     }
 }

@@ -77,7 +77,7 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "@mocoin/factory": "0.0.0-alpha.6",
+    "@mocoin/factory": "0.0.0-alpha.7",
     "debug": "^3.1.0",
     "http-status": "^1.1.2",
     "isomorphic-fetch": "^2.2.1",

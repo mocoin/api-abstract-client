@@ -12,7 +12,6 @@ export interface IStartParams {
     fromLocation: factory.transaction.buyCoin.IFromLocation;
     toLocation: factory.transaction.buyCoin.IToLocation;
 }
-
 /**
  * コイン購入取引サービス
  */
@@ -20,7 +19,7 @@ export class BuyCoinTransactionService extends Service {
     /**
      * 取引開始
      */
-    public async start(params: IStartParams): Promise<factory.transaction.buyCoin.ITransaction> {
+    public async start(params: IStartParams): Promise<factory.transaction.ITokenizedTransaction> {
         return this.fetch({
             uri: '/transactions/buyCoin/start',
             method: 'POST',
@@ -36,32 +35,30 @@ export class BuyCoinTransactionService extends Service {
             expectedStatusCodes: [OK]
         });
     }
-
     /**
      * 取引確定
      */
-    public async confirm(params: {
-        transactionId: string;
-    }): Promise<void> {
+    public async confirm(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
-            uri: `/transactions/buyCoin/${params.transactionId}/confirm`,
+            uri: '/transactions/buyCoin/confirm',
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT],
-            body: {}
+            body: {
+                token: params.token
+            }
         });
     }
-
     /**
      * 取引中止
      */
-    public async cancel(params: {
-        transactionId: string;
-    }): Promise<void> {
+    public async cancel(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
-            uri: `/transactions/buyCoin/${params.transactionId}/cancel`,
+            uri: '/transactions/buyCoin/cancel',
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT],
-            body: {}
+            body: {
+                token: params.token
+            }
         });
     }
 }
