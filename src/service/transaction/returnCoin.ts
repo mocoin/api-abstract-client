@@ -41,7 +41,7 @@ export class ReturnCoinTransactionService extends Service {
     public async confirm(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
             uri: '/transactions/returnCoin/confirm',
-            method: 'PUT',
+            method: 'POST',
             expectedStatusCodes: [NO_CONTENT],
             body: {
                 token: params.token
@@ -54,7 +54,7 @@ export class ReturnCoinTransactionService extends Service {
     public async cancel(params: factory.transaction.ITokenizedTransaction): Promise<void> {
         return this.fetch({
             uri: '/transactions/returnCoin/cancel',
-            method: 'PUT',
+            method: 'POST',
             expectedStatusCodes: [NO_CONTENT],
             body: {
                 token: params.token
