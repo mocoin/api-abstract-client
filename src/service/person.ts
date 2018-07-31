@@ -28,7 +28,7 @@ export class PersonService extends Service {
          * 口座名義
          */
         name: string;
-    }): Promise<factory.pecorino.account.IAccount> {
+    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>> {
         return this.fetch({
             uri: `/people/${params.personId}/accounts/coin`,
             method: 'POST',
@@ -38,7 +38,6 @@ export class PersonService extends Service {
             expectedStatusCodes: [CREATED]
         });
     }
-
     /**
      * コイン口座開解約
      * 口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
@@ -61,7 +60,6 @@ export class PersonService extends Service {
             expectedStatusCodes: [NO_CONTENT]
         });
     }
-
     /**
      * コイン口座検索
      */
@@ -71,7 +69,7 @@ export class PersonService extends Service {
          * ログインユーザーの場合'me'を指定
          */
         personId: string;
-    }): Promise<factory.pecorino.account.IAccount[]> {
+    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>[]> {
         return this.fetch({
             uri: `/people/${params.personId}/accounts/coin`,
             method: 'GET',
@@ -79,7 +77,6 @@ export class PersonService extends Service {
             expectedStatusCodes: [OK]
         });
     }
-
     /**
      * コイン口座取引履歴検索
      */
@@ -93,7 +90,7 @@ export class PersonService extends Service {
          * 口座番号
          */
         accountNumber: string;
-    }): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction[]> {
+    }): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Coin>[]> {
         return this.fetch({
             uri: `/people/${params.personId}/accounts/coin/${params.accountNumber}/actions/moneyTransfer`,
             method: 'GET',
@@ -101,7 +98,68 @@ export class PersonService extends Service {
             expectedStatusCodes: [OK]
         });
     }
-
+    /**
+     * ポイント口座開設
+     */
+    public async openPointAccount(params: {
+        /**
+         * person id
+         * ログインユーザーの場合'me'を指定
+         */
+        personId: string;
+        /**
+         * 口座名義
+         */
+        name: string;
+    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>> {
+        return this.fetch({
+            uri: `/people/${params.personId}/accounts/point`,
+            method: 'POST',
+            body: {
+                name: params.name
+            },
+            expectedStatusCodes: [CREATED]
+        });
+    }
+    /**
+     * ポイント口座開解約
+     * 口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
+     * 解約された口座で取引を進行しようとすると400エラーとなります。
+     */
+    public async closePointAccount(params: {
+        /**
+         * person id
+         * ログインユーザーの場合'me'を指定
+         */
+        personId: string;
+        /**
+         * 口座番号
+         */
+        accountNumber: string;
+    }): Promise<void> {
+        return this.fetch({
+            uri: `/people/${params.personId}/accounts/point/${params.accountNumber}/close`,
+            method: 'PUT',
+            expectedStatusCodes: [NO_CONTENT]
+        });
+    }
+    /**
+     * ポイント口座検索
+     */
+    public async searchPointAccounts(params: {
+        /**
+         * person id
+         * ログインユーザーの場合'me'を指定
+         */
+        personId: string;
+    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>[]> {
+        return this.fetch({
+            uri: `/people/${params.personId}/accounts/point`,
+            method: 'GET',
+            qs: {},
+            expectedStatusCodes: [OK]
+        });
+    }
     /**
      * 決済方法追加
      * 外部銀行口座や決済サービスから承認を受け取って、決済方法を追加するイメージ
@@ -125,7 +183,6 @@ export class PersonService extends Service {
             expectedStatusCodes: [CREATED]
         });
     }
-
     /**
      * 決済方法検索
      */

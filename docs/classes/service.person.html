@@ -108,11 +108,14 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="service.person.html#addpaymentmethod" class="tsd-kind-icon">add<wbr>Payment<wbr>Method</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#closecoinaccount" class="tsd-kind-icon">close<wbr>Coin<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#closepointaccount" class="tsd-kind-icon">close<wbr>Point<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#fetch" class="tsd-kind-icon">fetch</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#opencoinaccount" class="tsd-kind-icon">open<wbr>Coin<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#openpointaccount" class="tsd-kind-icon">open<wbr>Point<wbr>Account</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#searchcoinaccountmoneytransferactions" class="tsd-kind-icon">search<wbr>Coin<wbr>Account<wbr>Money<wbr>Transfer<wbr>Actions</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#searchcoinaccounts" class="tsd-kind-icon">search<wbr>Coin<wbr>Accounts</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#searchpaymentmethods" class="tsd-kind-icon">search<wbr>Payment<wbr>Methods</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="service.person.html#searchpointaccounts" class="tsd-kind-icon">search<wbr>Point<wbr>Accounts</a></li>
 							</ul>
 						</section>
 					</div>
@@ -131,7 +134,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Service.__constructor</p>
 								<ul>
-									<li>Defined in service.ts:44</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service.ts#L44">service.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -154,7 +157,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Service.options</p>
 						<ul>
-							<li>Defined in service.ts:44</li>
+							<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service.ts#L44">service.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +175,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.addPaymentMethod</p>
 								<ul>
-									<li>Defined in service/person.ts:109</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L167">service/person.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -208,12 +211,62 @@
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.closeCoinAccount</p>
 								<ul>
-									<li>Defined in service/person.ts:47</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L46">service/person.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>コイン口座開解約
+										口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
+									解約された口座で取引を進行しようとすると400エラーとなります。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>account<wbr>Number<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>口座番号</p>
+												</div>
+											</div>
+										</li>
+										<li class="tsd-parameter">
+											<h5>person<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>person id
+													ログインユーザーの場合&#39;me&#39;を指定</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="closepointaccount" class="tsd-anchor"></a>
+					<h3>close<wbr>Point<wbr>Account</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">close<wbr>Point<wbr>Account<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from PersonService.closePointAccount</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L129">service/person.ts:129</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ポイント口座開解約
 										口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
 									解約された口座で取引を進行しようとすると400エラーとなります。</p>
 								</div>
@@ -258,7 +311,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Service.fetch</p>
 								<ul>
-									<li>Defined in service.ts:53</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service.ts#L53">service.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -280,14 +333,14 @@
 					<a name="opencoinaccount" class="tsd-anchor"></a>
 					<h3>open<wbr>Coin<wbr>Account</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">open<wbr>Coin<wbr>Account<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">open<wbr>Coin<wbr>Account<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.openCoinAccount</p>
 								<ul>
-									<li>Defined in service/person.ts:21</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L21">service/person.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -320,7 +373,55 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="openpointaccount" class="tsd-anchor"></a>
+					<h3>open<wbr>Point<wbr>Account</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">open<wbr>Point<wbr>Account<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Point</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from PersonService.openPointAccount</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L104">service/person.ts:104</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ポイント口座開設</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>口座名義</p>
+												</div>
+											</div>
+										</li>
+										<li class="tsd-parameter">
+											<h5>person<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>person id
+													ログインユーザーの場合&#39;me&#39;を指定</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Point</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -328,14 +429,14 @@
 					<a name="searchcoinaccountmoneytransferactions" class="tsd-anchor"></a>
 					<h3>search<wbr>Coin<wbr>Account<wbr>Money<wbr>Transfer<wbr>Actions</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>Coin<wbr>Account<wbr>Money<wbr>Transfer<wbr>Actions<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.pecorino.action.transfer.moneyTransfer.IAction</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">search<wbr>Coin<wbr>Account<wbr>Money<wbr>Transfer<wbr>Actions<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.pecorino.action.transfer.moneyTransfer.IAction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.searchCoinAccountMoneyTransferActions</p>
 								<ul>
-									<li>Defined in service/person.ts:86</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L83">service/person.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -368,7 +469,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.pecorino.action.transfer.moneyTransfer.IAction</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.pecorino.action.transfer.moneyTransfer.IAction</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -376,14 +477,14 @@
 					<a name="searchcoinaccounts" class="tsd-anchor"></a>
 					<h3>search<wbr>Coin<wbr>Accounts</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>Coin<wbr>Accounts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">search<wbr>Coin<wbr>Accounts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.searchCoinAccounts</p>
 								<ul>
-									<li>Defined in service/person.ts:68</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L66">service/person.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -408,7 +509,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Coin</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -423,7 +524,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from PersonService.searchPaymentMethods</p>
 								<ul>
-									<li>Defined in service/person.ts:132</li>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L189">service/person.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -449,6 +550,46 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.ownershipInfo.IPaymentMethod</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.paymentMethodType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="searchpointaccounts" class="tsd-anchor"></a>
+					<h3>search<wbr>Point<wbr>Accounts</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">search<wbr>Point<wbr>Accounts<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Point</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from PersonService.searchPointAccounts</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/mocoin/api-abstract-client/blob/2485cb5/src/service/person.ts#L149">service/person.ts:149</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ポイント口座検索</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <span class="tsd-signature-type">object</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>person<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>person id
+													ログインユーザーの場合&#39;me&#39;を指定</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IAccount</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">factory.accountType.Point</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -488,10 +629,16 @@
 								<a href="service.person.html#closecoinaccount" class="tsd-kind-icon">close<wbr>Coin<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="service.person.html#closepointaccount" class="tsd-kind-icon">close<wbr>Point<wbr>Account</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="service.person.html#fetch" class="tsd-kind-icon">fetch</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="service.person.html#opencoinaccount" class="tsd-kind-icon">open<wbr>Coin<wbr>Account</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="service.person.html#openpointaccount" class="tsd-kind-icon">open<wbr>Point<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="service.person.html#searchcoinaccountmoneytransferactions" class="tsd-kind-icon">search<wbr>Coin<wbr>Account<wbr>Money<wbr>Transfer<wbr>Actions</a>
@@ -501,6 +648,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="service.person.html#searchpaymentmethods" class="tsd-kind-icon">search<wbr>Payment<wbr>Methods</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="service.person.html#searchpointaccounts" class="tsd-kind-icon">search<wbr>Point<wbr>Accounts</a>
 							</li>
 						</ul>
 					</li>
