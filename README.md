@@ -1,4 +1,4 @@
-# Mocoin API abstract client library for Javascript
+# Mocoin API Abstract Client Library for Javascript
 
 ## Table of contents
 

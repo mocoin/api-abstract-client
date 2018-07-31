@@ -90,7 +90,7 @@ export class PersonService extends Service {
          * 口座番号
          */
         accountNumber: string;
-    }): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Coin>[]> {
+    }): Promise<factory.action.transfer.moneyTransfer.IAction> {
         return this.fetch({
             uri: `/people/${params.personId}/accounts/coin/${params.accountNumber}/actions/moneyTransfer`,
             method: 'GET',
@@ -155,6 +155,27 @@ export class PersonService extends Service {
     }): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>[]> {
         return this.fetch({
             uri: `/people/${params.personId}/accounts/point`,
+            method: 'GET',
+            qs: {},
+            expectedStatusCodes: [OK]
+        });
+    }
+    /**
+     * ポイント口座取引履歴検索
+     */
+    public async searchPointAccountMoneyTransferActions(params: {
+        /**
+         * person id
+         * ログインユーザーの場合'me'を指定
+         */
+        personId: string;
+        /**
+         * 口座番号
+         */
+        accountNumber: string;
+    }): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>[]> {
+        return this.fetch({
+            uri: `/people/${params.personId}/accounts/point/${params.accountNumber}/actions/moneyTransfer`,
             method: 'GET',
             qs: {},
             expectedStatusCodes: [OK]
