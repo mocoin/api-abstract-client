@@ -1,10 +1,7 @@
 // tslint:disable:no-implicit-dependencies
-
 /**
  * service test
- * @ignore
  */
-
 import { } from 'mocha';
 import * as assert from 'power-assert';
 import * as querystring from 'querystring';
