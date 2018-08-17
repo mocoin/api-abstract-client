@@ -1,6 +1,6 @@
 {
   "name": "@mocoin/api-abstract-client",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha.8",
   "description": "Mocoin API Abstract Client Library for Javascript",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
