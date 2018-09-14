@@ -1,7 +1,7 @@
 import * as factory from '@mocoin/factory';
 import { CREATED, NO_CONTENT, OK } from 'http-status';
 
-import { Service } from '../service';
+import { IFetchOptions, Service } from '../service';
 
 export interface IBankAccountPaymentMethod {
     paymentMethodType: factory.paymentMethodType.BankAccount;
@@ -18,18 +18,22 @@ export class PersonService extends Service {
     /**
      * コイン口座開設
      */
-    public async openCoinAccount(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座名義
-         */
-        name: string;
-    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>> {
+    public async openCoinAccount(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座名義
+             */
+            name: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/coin`,
             method: 'POST',
             body: {
@@ -43,18 +47,22 @@ export class PersonService extends Service {
      * 口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
      * 解約された口座で取引を進行しようとすると400エラーとなります。
      */
-    public async closeCoinAccount(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座番号
-         */
-        accountNumber: string;
-    }): Promise<void> {
+    public async closeCoinAccount(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座番号
+             */
+            accountNumber: string;
+        },
+        options?: IFetchOptions
+    ): Promise<void> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/coin/${params.accountNumber}/close`,
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT]
@@ -63,14 +71,18 @@ export class PersonService extends Service {
     /**
      * コイン口座検索
      */
-    public async searchCoinAccounts(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>[]> {
+    public async searchCoinAccounts(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.pecorino.account.IAccount<factory.accountType.Coin>[]> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/coin`,
             method: 'GET',
             qs: {},
@@ -80,18 +92,22 @@ export class PersonService extends Service {
     /**
      * コイン口座取引履歴検索
      */
-    public async searchCoinAccountMoneyTransferActions(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座番号
-         */
-        accountNumber: string;
-    }): Promise<factory.action.transfer.moneyTransfer.IAction> {
+    public async searchCoinAccountMoneyTransferActions(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座番号
+             */
+            accountNumber: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.action.transfer.moneyTransfer.IAction> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/coin/${params.accountNumber}/actions/moneyTransfer`,
             method: 'GET',
             qs: {},
@@ -101,18 +117,22 @@ export class PersonService extends Service {
     /**
      * ポイント口座開設
      */
-    public async openPointAccount(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座名義
-         */
-        name: string;
-    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>> {
+    public async openPointAccount(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座名義
+             */
+            name: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/point`,
             method: 'POST',
             body: {
@@ -126,18 +146,22 @@ export class PersonService extends Service {
      * 口座の状態を変更するだけで、ユーザーの所有する口座リストから削除はされません。
      * 解約された口座で取引を進行しようとすると400エラーとなります。
      */
-    public async closePointAccount(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座番号
-         */
-        accountNumber: string;
-    }): Promise<void> {
+    public async closePointAccount(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座番号
+             */
+            accountNumber: string;
+        },
+        options?: IFetchOptions
+    ): Promise<void> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/point/${params.accountNumber}/close`,
             method: 'PUT',
             expectedStatusCodes: [NO_CONTENT]
@@ -146,14 +170,18 @@ export class PersonService extends Service {
     /**
      * ポイント口座検索
      */
-    public async searchPointAccounts(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-    }): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>[]> {
+    public async searchPointAccounts(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.pecorino.account.IAccount<factory.accountType.Point>[]> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/point`,
             method: 'GET',
             qs: {},
@@ -163,18 +191,22 @@ export class PersonService extends Service {
     /**
      * ポイント口座取引履歴検索
      */
-    public async searchPointAccountMoneyTransferActions(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-        /**
-         * 口座番号
-         */
-        accountNumber: string;
-    }): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>[]> {
+    public async searchPointAccountMoneyTransferActions(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+            /**
+             * 口座番号
+             */
+            accountNumber: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.pecorino.action.transfer.moneyTransfer.IAction<factory.accountType.Point>[]> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/accounts/point/${params.accountNumber}/actions/moneyTransfer`,
             method: 'GET',
             qs: {},
@@ -192,9 +224,11 @@ export class PersonService extends Service {
              * ログインユーザーの場合'me'を指定
              */
             personId: string;
-        } & IPaymentMethod<T>
+        } & IPaymentMethod<T>,
+        options?: IFetchOptions
     ): Promise<factory.ownershipInfo.IPaymentMethod<T>> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/paymentMethods`,
             method: 'POST',
             body: {
@@ -207,14 +241,18 @@ export class PersonService extends Service {
     /**
      * 決済方法検索
      */
-    public async searchPaymentMethods(params: {
-        /**
-         * person id
-         * ログインユーザーの場合'me'を指定
-         */
-        personId: string;
-    }): Promise<factory.ownershipInfo.IPaymentMethod<factory.paymentMethodType>[]> {
+    public async searchPaymentMethods(
+        params: {
+            /**
+             * person id
+             * ログインユーザーの場合'me'を指定
+             */
+            personId: string;
+        },
+        options?: IFetchOptions
+    ): Promise<factory.ownershipInfo.IPaymentMethod<factory.paymentMethodType>[]> {
         return this.fetch({
+            ...options,
             uri: `/people/${params.personId}/paymentMethods`,
             method: 'GET',
             qs: {},
